@@ -9,6 +9,8 @@ class GuestTest < MiniTest::Test
     @guest2 = Guest.new("Callum", 50)
     @guest3 = Guest.new("Charlie", 60)
     @guest4 = Guest.new("Frankie", 50)
+    @guest5 = Guest.new("Kyle", 60)
+    @guest6 = Guest.new("Taylor", 40)
   end
 
 

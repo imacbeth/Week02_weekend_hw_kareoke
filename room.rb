@@ -18,12 +18,18 @@ class Room
   end
 
   def check_guest_into_room(guest)
+    return if room_too_full?
     @guests.push(guest)
   end
 
   def check_guest_out_of_room(guest)
     index = @guests.index(guest)
-    @guests.slice!(index, 1)
+    @guests.slice!(index)
   end
+
+  def room_too_full?()
+    return @guests.length >= 5
+  end
+
 
 end

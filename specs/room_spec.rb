@@ -13,8 +13,17 @@ class RoomTest < MiniTest::Test
     @song4 = Song.new("Say my name")
     @song5 = Song.new("Lose yourself")
     @song6 = Song.new("Common People")
+
+    @guest1 = Guest.new("Iona", 30)
+    @guest2 = Guest.new("Callum", 50)
+    @guest3 = Guest.new("Charlie", 60)
+    @guest4 = Guest.new("Frankie", 50)
+    @guest5 = Guest.new("Kyle", 60)
+    @guest6 = Guest.new("Taylor", 40)
+
     @track_list = []
     @guests = []
+
     @room = Room.new("One", 100, @track_list, @guests)
 
   end
@@ -31,6 +40,7 @@ class RoomTest < MiniTest::Test
   def test_check_guest_into_room
     @room.check_guest_into_room(@guest1)
     assert_equal(1, @room.guests.length)
+    assert_equal("Iona", @room.guests[0].name())
   end
 
   def test_check_guest_out_of_room
@@ -39,6 +49,13 @@ class RoomTest < MiniTest::Test
     @room.check_guest_into_room(@guest3)
     @room.check_guest_out_of_room(@guest3)
     assert_equal(2, @room.guests.length)
+  end
+
+  def test_room_too_full?()
+    @room.check_guest_into_room(@guest2)
+    @room.check_guest_into_room(@guest3)
+    @room.check_guest_into_room(@guest4)
+    assert_equal(false, @room.room_too_full?)
   end
 
 end
