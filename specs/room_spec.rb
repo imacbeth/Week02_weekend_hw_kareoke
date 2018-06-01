@@ -51,11 +51,22 @@ class RoomTest < MiniTest::Test
     assert_equal(2, @room.guests.length)
   end
 
-  def test_room_too_full?()
+  def test_not_too__full_room_too_full?()
     @room.check_guest_into_room(@guest2)
     @room.check_guest_into_room(@guest3)
     @room.check_guest_into_room(@guest4)
     assert_equal(false, @room.room_too_full?)
   end
+
+  def test_too_full__room_too_full?()
+    @room.check_guest_into_room(@guest1)
+    @room.check_guest_into_room(@guest2)
+    @room.check_guest_into_room(@guest3)
+    @room.check_guest_into_room(@guest4)
+    @room.check_guest_into_room(@guest5)
+    @room.check_guest_into_room(@guest6)
+    assert_equal(true, @room.room_too_full?)
+  end
+
 
 end
