@@ -24,7 +24,7 @@ class RoomTest < MiniTest::Test
     @track_list = []
     @guests = []
 
-    @room = Room.new("One", 100, @track_list, @guests)
+    @room = Room.new("One", 100, @track_list, @guests, 5)
 
   end
 
@@ -51,14 +51,14 @@ class RoomTest < MiniTest::Test
     assert_equal(2, @room.guests.length)
   end
 
-  def test_not_too__full_room_too_full?()
+  def test_not_too__full_room_too_full?
     @room.check_guest_into_room(@guest2)
     @room.check_guest_into_room(@guest3)
     @room.check_guest_into_room(@guest4)
     assert_equal(false, @room.room_too_full?)
   end
 
-  def test_too_full__room_too_full?()
+  def test_too_full__room_too_full?
     @room.check_guest_into_room(@guest1)
     @room.check_guest_into_room(@guest2)
     @room.check_guest_into_room(@guest3)
@@ -77,6 +77,7 @@ class RoomTest < MiniTest::Test
     @room.check_guest_into_room(@guest6)
     assert_equal(5, @room.guests.length)
   end
+
 
 
 end

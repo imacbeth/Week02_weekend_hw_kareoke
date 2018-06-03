@@ -1,12 +1,13 @@
 class Room
 
-  attr_reader :number, :track_list, :till, :guests
+  attr_reader :number, :track_list, :till, :guests, :entry_fee
 
-  def initialize(number, till, track_list, guests)
+  def initialize(number, till, track_list, guests, entry_fee)
     @number = number
     @track_list = track_list
     @till = till
     @guests = guests
+    @entry_fee = entry_fee
   end
 
   def check_room_track_list
@@ -30,6 +31,8 @@ class Room
   def room_too_full?()
     return @guests.length >= 5
   end
+
+
 
 
 end
